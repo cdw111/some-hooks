@@ -1,0 +1,1 @@
+type MyConstructorParameters<T extends new (...arg: any) => any> = T extends new (...arg: infer P) => any ? P : never;
