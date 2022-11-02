@@ -1,0 +1,1 @@
+type MyInstanceType<T extends new (...arg: any) => any> = T extends new (...arg: any) => infer P ? P : never
