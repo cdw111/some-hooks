@@ -1,0 +1,1 @@
+type MyOmitThisParameter<T extends (...arg: any) => any> = T extends (this: any,...arg: infer F) => infer P ? (...arg: F) => P : never
