@@ -1,0 +1,1 @@
+type LastChar<T extends string> = T extends `${infer P}${infer F}` ? F extends '' ? P : LastChar<F> : never
