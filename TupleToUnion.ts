@@ -1,0 +1,1 @@
+type TupleToUnion<T extends any[]> = T extends [infer P,...infer F] ? P | TupleToUnion<F> : never
