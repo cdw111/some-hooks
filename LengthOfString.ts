@@ -1,0 +1,1 @@
+type LengthOfString<T extends string, F extends any[] = []> = T extends `${infer P}${infer A}` ? LengthOfString<A,[P,...F]> : F['length']
