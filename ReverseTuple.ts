@@ -1,0 +1,1 @@
+type ReverseTuple<T extends any[]> = T extends [infer F,...infer P] ? [...ReverseTuple<[...P]>,F] : []
