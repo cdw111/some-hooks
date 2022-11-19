@@ -44,3 +44,48 @@ type Slice<
 
     type r = SmallerThan<0,0>
   type temp = Slice<[1,2,3,4], 0, 2>
+
+
+
+  type IsAny<T> = 1 extends T & 0 ? true : false
+
+  type trmp = IsAny<any>
+
+
+
+
+
+type Subtract<A extends number, B extends number, S extends any[] = [],Q extends any[] = [], D extends any[] = []> = 
+SmallerThan<A, B> extends true ?
+never : S["length"] extends B ?
+Q["length"] extends A ?
+D["length"] :
+Subtract<A,B,[...S],[...Q,0],[...D,0]> :
+Subtract<A,B,[...S,0],[...Q,0],[...D]>
+
+type R = Subtract<4, 3>
+
+
+
+
+type Add<X extends number,Y extends number,S extends any[] = [], T extends any[] = []> = S["length"] extends X ? T["length"] extends Y ? [...S,...T]["length"] : Add<X,Y,[...S],[...T,0]> : Add<X,Y,[...S,0],[]>
+
+type Multiply<A extends number, B extends number, S extends any[] = []> = 
+S["length"] extends B ?
+0 :
+Add<A, Multiply<A,B,[...S,0]>>
+
+
+type AddTest = Multiply<0,0>
+
+
+type SmallThan<A extends number,B extends number,S extends any[] = []> = S["length"] extends B ? false : S["length"] extends A ? true : SmallThan<A,B,[...S,0]>
+
+type Divide<A extends number, B extends number,S extends any[] = []> = B extends 0 ?
+never :
+SmallThan<A,B> extends true ?
+S["length"] :
+Divide<Subtract<A,B>,B,[...S,0]>
+
+
+type test1 = Divide<1,0>
