@@ -153,3 +153,8 @@ type UndefinedToNull<T> = T extends undefined ? null :
     T extends infer R | undefined ? R | null : never;
 
     
+
+    type TupleToString<T extends string[]> = T extends [infer F extends string,...infer D extends string[]] ? `${F}${TupleToString<D>}` : ``
+
+
+    type ASA = TupleToString<['as','afsf','asff']>
