@@ -1,0 +1,1 @@
+type Repeat<T, C extends number, S extends any[] = []> = S["length"] extends C ? S : Repeat<T, C, [...S,T]>
