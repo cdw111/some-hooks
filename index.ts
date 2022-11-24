@@ -158,3 +158,17 @@ type UndefinedToNull<T> = T extends undefined ? null :
 
 
     type ASA = TupleToString<['as','afsf','asff']>
+
+
+    type asff<T> = T extends any ? 0 : any;
+    type pp = Filter<[any,1,'BFE', 2, any, 'dev'], string>
+    type asaa = any extends string ? string : number;
+    type Filter<T extends any[], A> = T extends [infer F,...infer P] ? F extends A ? [F] : [1] : []
+    // type Filter<T extends any[], A, R extends A[] = []> = 
+    // T extends [infer F, ...infer O] 
+    //   ? [F] extends [A]
+    //     ? Filter<O, A, [...R, F]>
+    //     : Filter<O, A, R>
+    //   : R
+
+  
